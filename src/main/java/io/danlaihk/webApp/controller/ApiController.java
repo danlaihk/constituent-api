@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class Api {
+public class ApiController {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Autowired

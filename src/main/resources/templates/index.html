@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+    <title>HSI API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+    <script src="/js/plugins/axios.min.js"></script>
+    <script src="/js/plugins/vue.js"></script>
+    <script src="/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body{
+            font-size:16px;
+        }
+        .modal-dialog.constituent{
+            width: 90%;
+            max-width: 90%;
+
+        }
+        .constituent button span{
+            font-size: 16px;
+        }
+        .modal-title{
+            font-size: 16px;
+
+        }
+        .table-title{
+            color: #108733;
+        }
+        .table-head th{
+            background: #e9e6e1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="table-title bg-light" scope="col" colspan="3">恆指成份股</th>
+                    </tr>
+                    <tr class="table-head">
+                        <th scope="col">代號</th>
+                        <th scope="col">成份股</th>
+                        <th scope="col">Constituent Name</th>
+                    </tr>
+                    </thead>
+                    <tbody data-renderer="constituent-list">
+                    <tr v-for="row in jdata" :key="row.code">
+                        <td>{{ row.code }}</td>
+                        <td>{{ row.cname }}</td>
+                        <td>{{ row.name }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
