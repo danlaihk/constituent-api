@@ -1,0 +1,9 @@
+
+CREATE TABLE `constituent` (
+  `id` int(11) NOT NULL,
+  `code` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `cname` varchar(100) DEFAULT NULL,
+  `stime` datetime NOT NULL,
+  `index_type` varchar(50) DEFAULT NULL
+);
