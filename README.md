@@ -7,6 +7,27 @@ Educational use only.
 **data table structure (MySql) is written in table-structure/constituent**
 
 
+**************************************************************************
+Api Endpoint
+
+Method: Get
+
+http://{{domain.name}}/api/constituent <br/>
+http://{{domain.name}}/api/constituent/list <br/><br/>
+*Get the list of constituents <br/>
+<br/>
+http://{{domain.name}}/api/constituent/code/{{code number}} <br/><br/>
+*Get the constituent by code number(eg: 700) <br/>
+
+<br/><br/>
+Mthod: Post<br/>
+http://{{domain.name}}/api/constituent/list<br/><br/>
+*Renew the list in database from hsi.com.hk<br/>
+
+
+**************************************************************************
+
+
 1.web page sample
 ![image](https://github.com/danlaihk/constituent-api/blob/master/web%20page.png)
 
