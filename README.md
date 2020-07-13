@@ -8,7 +8,7 @@ Educational use only.
 
 
 **************************************************************************
-Api Endpoint
+<b>Api Endpoint</b>
 
 Method: Get
 
