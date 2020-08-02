@@ -1,0 +1,7 @@
+CREATE TABLE `index_lists` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `stime` datetime NOT NULL,
+  `timestamp` bigint(10) UNSIGNED NOT NULL,
+  `last` float UNSIGNED NOT NULL,
+  `index_type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
