@@ -16,6 +16,10 @@ http://{{domain.name}}/api/constituent <br/>
 http://{{domain.name}}/api/constituent/list <br/><br/>
 *Get the list of constituents <br/>
 <br/>
+
+
+
+
 http://{{domain.name}}/api/constituent/code/{{code number}} <br/><br/>
 *Get the constituent by code number(eg: 700) <br/>
 
