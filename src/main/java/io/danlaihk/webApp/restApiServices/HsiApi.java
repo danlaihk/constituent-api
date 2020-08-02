@@ -2,7 +2,9 @@ package io.danlaihk.webApp.restApiServices;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.danlaihk.webApp.json.Underlying;
+import io.danlaihk.webApp.json.hsiApi.ConData;
 import io.danlaihk.webApp.json.hsiApi.Constituent;
+import io.danlaihk.webApp.json.hsiApi.IndexChart;
 import io.danlaihk.webApp.json.hsiApi.Jdata;
 import org.springframework.web.client.RestTemplate;
 
@@ -66,72 +68,75 @@ public class HsiApi {
         // mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uList);
         return uList;
     }
-    /*
-    public Map<String, Underlying> getJdata(RestTemplate rTemp){
 
-
+    //get chart data
+    public List<List<Object>>  getChartData(){
+        List<Underlying> uList = new ArrayList<>();
+        String[] langArr = {"chi", "eng"};
         Map<String, Underlying> uMap = new HashMap<>();
-        try{
-            String[] langArr = {"chi", "eng"};
+        //https://www.hsi.com.hk/data/chi/indexes/00001.00/chart.json
+        String url = "https://www.hsi.com.hk/data/chi/indexes/00001.00/chart.json";
 
+        IndexChart i = rTemp.getForObject(url, IndexChart.class);
+        return i.getPts();
 
-            for(String lang: langArr){
-
-                String url = "https://www.hsi.com.hk/data/"+lang+"/rt/index-series/hsi/constituents.do";
-
-                Jdata q = rTemp.getForObject(url, Jdata.class);
-
-                //System.out.println("The api uri is:"); //
-                //System.out.println(url); //
-                //stime
-                //System.out.println(q.getRequestDate()); //
+        //ObjectMapper m = new ObjectMapper();
+        //System.out.println(m.writerWithDefaultPrettyPrinter().writeValueAsString(pts));
 
 
 
-                List<Constituent> list = q.getIndexSeriesList().get(0).getIndexList().get(0).getConstituentContent();
+        // mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uList);
 
-                for(Constituent con: list){
-                    String key = con.getCode();
-                    if(!uMap.containsKey(key)){
-                        Constituent underlying = new Constituent(con.getCode());
+    }
 
+    public List<Underlying> getConData(){
+        List<Underlying> uList = new ArrayList<>();
+        String[] langArr = {"chi", "eng"};
+        Map<String, Underlying> uMap = new HashMap<>();
+        for(String lang: langArr){
 
-                        if(lang.equals("chi")){
+            String url = "https://www.hsi.com.hk/data/"+lang+"/rt/index-series/hsi/constituents.do";
 
-                            underlying.setCname(con.getConstituentName());
-                        }else if(lang.equals("eng")){
-                            underlying.setName(con.getConstituentName());
-                        }
-
-                        uMap.put(key, underlying);
-                    }else {
-                        Underlying underlying = uMap.get(key);
+            ConData q = rTemp.getForObject(url, ConData.class);
 
 
-                        if(lang.equals("chi")){
+            List<Constituent> list = q.getIndexSeriesList().get(0).getIndexList().get(0).getConstituentContent();
 
-                            underlying.setCname(con.getConstituentName());
-                        }else if(lang.equals("eng")){
-                            underlying.setName(con.getConstituentName());
-                        }
+
+            for(Constituent con: list){
+                String key = con.getCode();
+                if(!uMap.containsKey(key)){
+                    Underlying underlying = new Underlying(con.getCode());
+
+                    if(lang.equals("chi")){
+
+                        underlying.setCname(con.getConstituentName());
+                    }else if(lang.equals("eng")){
+                        underlying.setName(con.getConstituentName());
                     }
 
+                    uMap.put(key, underlying);
+                }else {
+                    Underlying underlying = uMap.get(key);
 
 
+                    if(lang.equals("chi")){
+
+                        underlying.setCname(con.getConstituentName());
+                    }else if(lang.equals("eng")){
+                        underlying.setName(con.getConstituentName());
+                    }
                 }
-
-
-
-
             }
 
-
-        }catch (Exception e){
-            System.out.println(e.toString());
         }
-        return uMap;
+
+        for(Map.Entry<String, Underlying> entry : uMap.entrySet()) {
+            uList.add(entry.getValue());
+        }
+
+        // mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uList);
+        return uList;
     }
-    
-     */
 
 }
