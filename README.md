@@ -34,6 +34,8 @@ http://{{domain.name}}/api/constituent/list<br/><br/>
 2.api json
 ![image](https://github.com/danlaihk/constituent-api/blob/master/api%20json.png)
 
+![image](https://github.com/danlaihk/constituent-api/blob/master/post%20remote%20data.png)
+
 3.data table
 ![image](https://github.com/danlaihk/constituent-api/blob/master/data%20table.png)
 
