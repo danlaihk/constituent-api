@@ -32,7 +32,6 @@ public class ApiController {
             "/constituent/list",
     })
     public String getConList()throws Exception{
-        System.out.println("check");
         ConstituentRepository conRepo = new ConstituentRepository(jdbcTemplate);
         //return user.toString();
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(conRepo.getList());

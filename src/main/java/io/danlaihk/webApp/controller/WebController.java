@@ -35,7 +35,6 @@ public class WebController {
         byte[] bytes = input.getBytes(StandardCharsets.UTF_8);
 
         String utf8EncodedString = new String(bytes, StandardCharsets.UTF_8);
-        System.out.println(utf8EncodedString);
         return utf8EncodedString;
     }
     public List<Underlying> getConList(){
