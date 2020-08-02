@@ -17,17 +17,17 @@ http://{{domain.name}}/api/constituent/list <br/><br/>
 *Get the list of constituents <br/>
 <br/>
 
-
+-------------------------------------------------------------------------
 
 
 http://{{domain.name}}/api/constituent/code/{{code number}} <br/><br/>
 *Get the constituent by code number(eg: 700) <br/>
-
+-------------------------------------------------------------------------
 http://{{domain.name}}/api/chart/index/{index} <br/>
 <br/><br/>
 *Get the indexs' chart data(only available for HSI temporaily)
 
-
+-------------------------------------------------------------------------
 
 
 Mthod: Post<br/>
